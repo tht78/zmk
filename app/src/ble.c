@@ -70,7 +70,7 @@ static uint8_t active_profile;
 
 #if IS_ENABLED(CONFIG_BT_DEVICE_NAME_APPEND_SN)
 
-static char bt_device_name[sizeof(CONFIG_BT_DEVICE_NAME) + CONFIG_BT_DEVICE_NAME_SN_BYTES + 1];
+static char bt_device_name[sizeof(CONFIG_BT_DEVICE_NAME) + CONFIG_BT_DEVICE_NAME_SN_BYTES];
 
 void fill_serial_number(char *buf, int length);
 
@@ -78,8 +78,7 @@ void fill_serial_number(char *buf, int length);
 // CONFIG_BT_DEVICE_NAME
 void init_bt_device_name() {
     strncpy(bt_device_name, CONFIG_BT_DEVICE_NAME, sizeof(bt_device_name));
-    bt_device_name[sizeof(CONFIG_BT_DEVICE_NAME) - 1] = ' ';
-    fill_serial_number(bt_device_name + sizeof(CONFIG_BT_DEVICE_NAME),
+    fill_serial_number(bt_device_name + sizeof(CONFIG_BT_DEVICE_NAME) - 1,
                        CONFIG_BT_DEVICE_NAME_SN_BYTES);
     bt_device_name[sizeof(bt_device_name) - 1] = '\0';
 }
