@@ -1,5 +1,6 @@
 # Copyright (c) 2021 The ZMK Contributors
 # SPDX-License-Identifier: MIT
+# test
 
 if BOARD_GLOVE80_LH
 config BOARD
